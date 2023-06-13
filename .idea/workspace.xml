@@ -5,22 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fc1b88d8-1167-401f-8a61-6675e4062390" name="变更" comment="s">
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/DatabaseManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/DatabaseManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/MenuManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/MenuManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/idex.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/idex.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Menu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/MenuItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MenuItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Order.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/script.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
   </component>
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
@@ -102,6 +96,8 @@
       <updated>1686577577536</updated>
       <workItem from="1686577580199" duration="5139000" />
       <workItem from="1686638224293" duration="3543000" />
+      <workItem from="1686645815757" duration="1270000" />
+      <workItem from="1686647469352" duration="139000" />
     </task>
     <servers />
   </component>
