@@ -6,35 +6,57 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<h1>自助点餐管理系统</h1>
+<header>
+    <h1>自助点餐管理系统</h1>
+</header>
 
-<!-- 菜单展示区域 -->
-<div class="menu-container">
-    <h2>菜单</h2>
-    <div id="menu-items"></div>
+<nav>
+    <ul>
+        <li><a href="menu.html">菜单管理</a></li>
+        <li><a href="customer.html">顾客管理</a></li>
+        <li><a href="order.html">订单管理</a></li>
+    </ul>
+</nav>
+
+
+<div class="container">
+    <div class="menu">
+        <h2>菜单</h2>
+        <div id="menu-items-container"></div>
+    </div>
+
+    <div class="order">
+        <h2>订单</h2>
+        <div id="order-items-container">
+            <!-- 订单项的HTML代码 -->
+            <div class="order-item">
+                <span class="order-name">鱼香肉丝</span>
+                <span class="order-price">28.00</span>
+                <span class="order-quantity">x2</span>
+                <button class="btn-update" data-order-id="1">修改</button>
+                <button class="btn-cancel" data-order-id="1">取消</button>
+            </div>
+            <div class="order-item">
+                <span class="order-name">宫保鸡丁</span>
+                <span class="order-price">32.00</span>
+                <span class="order-quantity">x1</span>
+                <button class="btn-update" data-order-id="2">修改</button>
+                <button class="btn-cancel" data-order-id="2">取消</button>
+            </div>
+        </div>
+
+        <div id="total-amount-container"></div>
+        <form id="customer-form">
+            <label for="name">姓名：</label>
+            <input type="text" id="name" required>
+            <label for="contact">联系方式：</label>
+            <input type="text" id="contact" required>
+            <button type="submit">提交订单</button>
+        </form>
+    </div>
 </div>
 
-<!-- 订单管理区域 -->
-<div class="order-container">
-    <h2>订单</h2>
-    <div id="order-items"></div>
-    <p>总金额: <span id="total-amount"></span></p>
-    <button id="submit-order">提交订单</button>
-</div>
 
-<!-- 顾客信息输入区域 -->
-<div class="customer-container">
-    <h2>顾客信息</h2>
-    <form id="customer-form">
-        <label for="name">姓名：</label>
-        <input type="text" id="name" required><br>
-
-        <label for="contact">联系方式：</label>
-        <input type="text" id="contact" required><br>
-
-        <button type="submit">提交</button>
-    </form>
-</div>
 
 <script src="script.js"></script>
 </body>

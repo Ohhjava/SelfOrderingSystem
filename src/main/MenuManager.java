@@ -1,34 +1,39 @@
 import java.sql.*;
 
 public class MenuManager {
-    public static void main(String[] args) {
-        Connection connection = null;
-        Statement statement = null;
-        ResultSet resultSet = null;
+    private Connection connection;
 
-        try {
-            connection = DatabaseManager.getConnection();
-            statement = connection.createStatement();
-            resultSet = statement.executeQuery("SELECT * FROM menu");
+    public MenuManager(Connection connection) {
+        this.connection = connection;
+    }
 
-            while (resultSet.next()) {
-                int id = resultSet.getInt("id");
-                String name = resultSet.getString("name");
-                double price = resultSet.getDouble("price");
-                String description = resultSet.getString("description");
+    // 添加菜单项
+    public void addMenuItem(String name, double price) throws SQLException {
+        String sql = "INSERT INTO menu (name, price) VALUES (?, ?)";
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setString(1, name);
+            statement.setDouble(2, price);
+            statement.executeUpdate();
+        }
+    }
 
-                System.out.println("菜品ID: " + id);
-                System.out.println("菜品名称: " + name);
-                System.out.println("价格: " + price);
-                System.out.println("描述: " + description);
-                System.out.println("------------------------");
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            DatabaseManager.closeResultSet(resultSet);
-            DatabaseManager.closeStatement(statement);
-            DatabaseManager.closeConnection(connection);
+    // 修改菜单项
+    public void updateMenuItem(int menuItemId, String newName, double newPrice) throws SQLException {
+        String sql = "UPDATE menu SET name = ?, price = ? WHERE id = ?";
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setString(1, newName);
+            statement.setDouble(2, newPrice);
+            statement.setInt(3, menuItemId);
+            statement.executeUpdate();
+        }
+    }
+
+    // 删除菜单项
+    public void deleteMenuItem(int menuItemId) throws SQLException {
+        String sql = "DELETE FROM menu WHERE id = ?";
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setInt(1, menuItemId);
+            statement.executeUpdate();
         }
     }
 }

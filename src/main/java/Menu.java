@@ -3,40 +3,26 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Menu {
-    private int id;
-    private String name;
-    private double price;
-    private String description;
+    private static final String SELECT_ALL_QUERY = "SELECT * FROM menu";
+    private static final String INSERT_QUERY = "INSERT INTO menu (name, price, description) VALUES (?, ?, ?)";
 
-    // 构造函数、getter和setter方法等可以根据需要自行添加
+    public List<MenuItem> getMenuItems() {
+        List<MenuItem> menuItems = new ArrayList<>();
 
-    // 在这里可以添加其他菜单管理相关的方法，如添加菜单项、获取菜单列表等
-    private List<Menu> menuItems;
-
-    public Menu() {
-        menuItems = new ArrayList<>();
-    }
-
-    public List<Menu> getMenuItems() {
-        // 从数据库中获取菜单项列表并返回
-        try {
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/DianCan?user=student&password=123456");
-            PreparedStatement statement = connection.prepareStatement("SELECT * FROM menu");
-            ResultSet resultSet = statement.executeQuery();
+        try (Connection connection = DatabaseManager.getConnection();
+             Statement statement = connection.createStatement();
+             ResultSet resultSet = statement.executeQuery(SELECT_ALL_QUERY)) {
 
             while (resultSet.next()) {
-                Menu menuItem = new Menu();
-                menuItem.setId(resultSet.getInt("id"));
-                menuItem.setName(resultSet.getString("name"));
-                menuItem.setPrice(resultSet.getDouble("price"));
-                menuItem.setDescription(resultSet.getString("description"));
+                int id = resultSet.getInt("id");
+                String name = resultSet.getString("name");
+                double price = resultSet.getDouble("price");
+                String description = resultSet.getString("description");
 
+                MenuItem menuItem = new MenuItem(id, name, price, description);
                 menuItems.add(menuItem);
             }
 
-            resultSet.close();
-            statement.close();
-            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -44,19 +30,16 @@ public class Menu {
         return menuItems;
     }
 
-    public void addMenuItem(Menu menuItem) {
-        try {
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/DianCan?user=student&password=123456");
-            PreparedStatement statement = connection.prepareStatement("INSERT INTO menu (id, name, price, description) VALUES (?, ?, ?, ?)");
-            statement.setInt(1, menuItem.getId());
-            statement.setString(2, menuItem.getName());
-            statement.setDouble(3, menuItem.getPrice());
-            statement.setString(4, menuItem.getDescription());
+    public void addMenuItem(MenuItem menuItem) {
+        try (Connection connection = DatabaseManager.getConnection();
+             PreparedStatement statement = connection.prepareStatement(INSERT_QUERY)) {
+
+            statement.setString(1, menuItem.getName());
+            statement.setDouble(2, menuItem.getPrice());
+            statement.setString(3, menuItem.getDescription());
 
             statement.executeUpdate();
 
-            statement.close();
-            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }

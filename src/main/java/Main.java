@@ -13,6 +13,12 @@ public class Main {
         menuItem1.setName("Hamburger");
         menuItem1.setPrice(8.99);
         menuItem1.setDescription("Delicious hamburger with all the fixings");
+        menuItem1.setId(2);
+        menuItem1.setName("French Fries");
+        menuItem1.setPrice(3.99);
+        menuItem1.setDescription("Crispy golden French fries");
+
+
 
         Menu menuItem2 = new Menu();
         menuItem2.setId(2);

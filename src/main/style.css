@@ -2,50 +2,45 @@ body {
     font-family: Arial, sans-serif;
 }
 
-h1 {
-    text-align: center;
-}
-
-.menu-container, .order-container, .customer-container {
-    margin: 20px;
+header {
+    background-color: #333;
+    color: #fff;
     padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
 }
 
-#menu-items {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 10px;
-}
-
-#order-items {
-    margin-bottom: 10px;
-}
-
-#total-amount {
-    font-weight: bold;
-}
-
-.customer-container form {
+.container {
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
 }
 
-.customer-container label {
-    margin-bottom: 5px;
+.menu, .order {
+    width: 45%;
+    padding: 10px;
 }
 
-.customer-container input {
+h2 {
+    margin-top: 0;
+}
+
+.menu-item, .order-item {
+    border: 1px solid #ccc;
+    padding: 10px;
     margin-bottom: 10px;
 }
 
-.customer-container button {
-    align-self: flex-start;
-    padding: 5px 10px;
-    background-color: #007bff;
+button {
+    background-color: #333;
     color: #fff;
     border: none;
-    border-radius: 5px;
+    padding: 5px 10px;
     cursor: pointer;
+}
+
+#customer-form {
+    margin-top: 10px;
+}
+
+#customer-form label, #customer-form input {
+    display: block;
+    margin-bottom: 5px;
 }

@@ -1,35 +1,30 @@
-import java.util.ArrayList;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Order {
-    private int id;
-    private Customer customer;
-    private List<Menu> menuItems;
-    private double totalAmount;
+    private static final String INSERT_QUERY = "INSERT INTO orders (name, contact, total_amount) VALUES (?, ?, ?)";
 
-    // 构造函数、getter和setter方法等可以根据需要自行添加
+    public void createOrder(String name, String contact, double totalAmount) {
+        try (Connection connection = DatabaseManager.getConnection();
+             PreparedStatement statement = connection.prepareStatement(INSERT_QUERY, Statement.RETURN_GENERATED_KEYS)) {
 
-    // 在这里可以添加其他订单管理相关的方法，如添加菜品到订单、计算订单总金额等
-    private List<Menu> menuItems;
-    private double totalAmount;
+            statement.setString(1, name);
+            statement.setString(2, contact);
+            statement.setDouble(3, totalAmount);
 
-    public Order() {
-        menuItems = new ArrayList<>();
-        totalAmount = 0.0;
-    }
+            statement.executeUpdate();
 
-    public void addMenuItem(Menu menuItem) {
-        menuItems.add(menuItem);
-        totalAmount += menuItem.getPrice();
-    }
+            try (ResultSet generatedKeys = statement.getGeneratedKeys()) {
+                if (generatedKeys.next()) {
+                    int orderId = generatedKeys.getInt(1);
 
-    public void removeMenuItem(Menu menuItem) {
-        menuItems.remove(menuItem);
-        totalAmount -= menuItem.getPrice();
-    }
+                    // 在此处根据orderId添加订单项数据到数据库中的订单项表
+                }
+            }
 
-    public double calculateTotalAmount() {
-        return totalAmount;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }
