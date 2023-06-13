@@ -1,0 +1,51 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    text-align: center;
+}
+
+.menu-container, .order-container, .customer-container {
+    margin: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#menu-items {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+}
+
+#order-items {
+    margin-bottom: 10px;
+}
+
+#total-amount {
+    font-weight: bold;
+}
+
+.customer-container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.customer-container label {
+    margin-bottom: 5px;
+}
+
+.customer-container input {
+    margin-bottom: 10px;
+}
+
+.customer-container button {
+    align-self: flex-start;
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}

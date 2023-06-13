@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>自助点餐管理系统</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<h1>自助点餐管理系统</h1>
+
+<!-- 菜单展示区域 -->
+<div class="menu-container">
+    <h2>菜单</h2>
+    <div id="menu-items"></div>
+</div>
+
+<!-- 订单管理区域 -->
+<div class="order-container">
+    <h2>订单</h2>
+    <div id="order-items"></div>
+    <p>总金额: <span id="total-amount"></span></p>
+    <button id="submit-order">提交订单</button>
+</div>
+
+<!-- 顾客信息输入区域 -->
+<div class="customer-container">
+    <h2>顾客信息</h2>
+    <form id="customer-form">
+        <label for="name">姓名：</label>
+        <input type="text" id="name" required><br>
+
+        <label for="contact">联系方式：</label>
+        <input type="text" id="contact" required><br>
+
+        <button type="submit">提交</button>
+    </form>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
